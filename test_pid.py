@@ -95,12 +95,13 @@ class GetPIDPlot():
 
 if __name__ == "__main__":
     get_plot = GetPIDPlot()
-    get_plot.plot(1.2, 1, 0.001)
-    get_plot.plot(1.2, 1.5, 0.001)
+    PID_list = [[1.2, 1, 0.001], [1.2, 1.5, 0.001]]
+    for pid in PID_list:
+        get_plot.plot(pid[0], pid[1], pid[2])
     plt.xlabel('time (s)')
     plt.ylabel('PID (PV)')
     plt.title('TEST PID')
     plt.ylim((1-0.5, 1+0.5))
     plt.grid(True)
-    plt.legend(['label1', 'label2', 'label3'])
+    plt.legend(['target'] + PID_list)
     plt.show()
